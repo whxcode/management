@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html style="height: 100%" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据可视化</title>
+</head>
+<body style="height: 100%; margin: 0">
+<div  id="main1"
+      style="height: 100%"></div>
+
+</div>
+
+
+<script src="/static/js/echarts.min.js"></script>
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+
+        //饼图
+    var myChart1 = echarts.init(document.getElementById('main1'));
+
+            // 初始 option
+            myChart1.showLoading({
+                text: '正在加载数据中.....'
+            });
+
+
+     option1 = {
+        backgroundColor: '#2c343c',
+
+        title: {
+            text: '留校信息统计',
+
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#13cc18'
+            },
+
+            subtext:'导出为excel表格',
+            sublink: '/UserCountDownloads',
+            //副标题文本样式
+            subtextStyle:{
+
+                itemGap:20,
+                color: '#8bcc29'
+            }
+
+        },
+
+
+
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:[],
+            color: '#c2182d',
+            textStyle: {
+                color: '#fbf9ff'
+            }
+        },
+
+
+        series : [
+            {
+                name:'访问来源',
+                type:'pie',
+                radius : '55%',
+                center: ['50%', '50%'],
+                data:[
+
+                ].sort(function (a, b) { return a.value - b.value; }),
+                roseType: 'radius',
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        },
+                        smooth: 0.2,
+                        length: 10,
+                        length2: 20
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#c23531',
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
+                }
+            }
+        ]
+    };
+
+
+
+    function getData(){
+        myChart1.hideLoading();
+
+       $.ajax({
+           url : "/getData",
+           type : "GET",
+           dataType : "json",
+           success : function(result) {
+               if (result) {
+                   myChart1.setOption({
+                       series:[{
+                           data:result
+                       }]
+                   });
+               }
+           }
+
+       });
+
+
+   }
+    myChart1.setOption(option1);
+
+
+    setInterval(function () {
+     getData();
+
+    },2000)
+
+</script>
+</body>
+
+</html>
+
+

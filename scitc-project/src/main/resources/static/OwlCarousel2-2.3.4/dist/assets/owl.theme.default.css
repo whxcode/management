@@ -1,0 +1,23 @@
+
+/*# sourceMappingURL=owl.theme.default.css.map */
+.owl-dots {
+    text-align: center;
+    padding: .5rem;
+}
+.owl-carousel button.owl-dot {
+    width: 10px;
+    height: 10px;
+    background:rgba(0,0,0,.2);
+    border-radius: 50%;
+    outline: none;
+    margin: 0 1rem;
+    transition: all .2s;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.owl-carousel button.owl-dot:hover {
+    background:rgba(0,0,0,.4);
+}
+.owl-carousel button.owl-dot span {
+    display: none;
+}

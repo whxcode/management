@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人留校记录</title>
+    <link rel="stylesheet" href="../../../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+</head>
+<body>
+<table class="table table-hover">
+    <h3 align="center">我的留校离校记录</h3>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>校区</th>
+        <th>楼栋</th>
+        <th>寝室号</th>
+        <th>系部</th>
+        <th>班级</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>留校理由</th>
+        <th>留校开始时间</th>
+        <th>留校结束时间</th>
+        <th>创建时间</th>
+        <th>学生电话</th>
+        <th>家长电话</th>
+        <th>辅导员</th>
+        <th>辅导员电话</th>
+        <th>备注</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--默认数据分页-->
+    <tr th:each="person: ${personal}">
+        <td th:text="${person.id}">您没有数据</td>
+        <td th:text="${person.campus}">您没有数据</td>
+        <td th:text="${person.building}">您没有数据</td>
+        <td th:text="${person.bedroom_number}">您没有数据</td>
+        <td th:text="${person.department}">您没有数据</td>
+        <td th:text="${person.classes}">您没有数据</td>
+        <td th:text="${person.stuName}">您没有数据</td>
+        <td th:text="${person.gender}">您没有数据</td>
+        <td th:text="${person.deten_reason}">您没有数据</td>
+        <td th:text="${person.deten_begin_time}">您没有数据</td>
+        <td th:text="${person.deten_last_time}">您没有数据</td>
+        <td th:text="${person.create_time}">您没有数据</td>
+        <td th:text="${person.stu_phone}">您没有数据</td>
+        <td th:text="${person.parent_phone}">您没有数据</td>
+        <td th:text="${person.counselor}">您没有数据</td>
+        <td th:text="${person.counselor_phone}">您没有数据</td>
+        <td th:text="${person.remark}">您没有数据</td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script src="../../../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>user</title>
+
+    <link rel="stylesheet" href="../../../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+</head>
+<body class="container">
+<br/>
+<h1>修改用户</h1>
+<br/><br/>
+<div class="with:80%">
+    <form class="form-horizontal"   th:action="@{/admin/edit}"  action="/admin/edit" th:object="${user}"  method="post">
+        <input type="hidden" name="id" th:value="*{id}" />
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">username</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="username"  id="username" th:value="*{username}" placeholder="username"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nickname" class="col-sm-2 control-label" >nickname</label>
+            <div class="col-sm-10">
+                <input type="nickname" class="form-control" name="nickname" id="nickname"  th:value="*{nickname}" placeholder="password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">password</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="password"  id="password" th:value="*{password}" placeholder="age"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="classes" class="col-sm-2 control-label">classes</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="classes"  id="classes" th:value="*{classes}" placeholder="age"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="gender" class="col-sm-2 control-label">gender</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="gender"  id="gender" th:value="*{gender}" placeholder="age"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="status" class="col-sm-2 control-label">status</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="status"  id="status" th:value="*{status}" placeholder="age"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="create_time" class="col-sm-2 control-label">create_time</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="create_time"  id="create_time" th:value="*{create_time}" placeholder="age"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="last_login_time" class="col-sm-2 control-label">last_login_time</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="last_login_time"  id="last_login_time" th:value="*{last_login_time}" placeholder="age"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="last_update_time" class="col-sm-2 control-label">last_update_time</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="last_update_time"  id="last_update_time" th:value="*{last_update_time}" placeholder="age"/>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="修改" class="btn btn-info" />
+                &nbsp; &nbsp; &nbsp;
+                <a th:href="@{/admin/show/page/list}" class="btn btn-info">返回</a>
+            </div>
+
+        </div>
+
+    </form>
+
+    <a href="/admin/edit"></a>
+
+
+</div>
+
+</body>
+
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script src="../../../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</html>

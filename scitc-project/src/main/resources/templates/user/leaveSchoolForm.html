@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"  style="overflow: auto" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../static/css/normalize.css">
+    <link rel="stylesheet" href="../../../static/css/main.css">
+    <link rel="stylesheet" href="../../../static/lib/layui/css/layui.css">
+
+
+    <link rel="stylesheet" href="../../../static/css/staySchoolForm.css">
+    <link rel="stylesheet" href="../../../static/css/leaveStyle.css">
+    <script src="../../../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../../../static/lib/layui/layui.js"></script>
+
+    <style>
+        .layui-anim-upbit {
+            color: #a0a0a0;
+        }
+        .items-self {
+            display: inline-block !important;
+            margin-right:1rem !important;
+        }
+
+        .layui-unselect {
+            padding-right: 0;
+        }
+        .input-self-type {
+            width: auto !important;
+            height: auto!important;
+        }
+        input {
+            border-radius: 0 !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="container-child">
+        <form  th:action="@{/user/student/leave}" action="/user/student/leave" class="infoText layui-form" method="post">
+            <div class="child">
+                <div class="child-left">
+                    <div class="group">
+                        <input type="text" placeholder="姓名" id="stuName" name="stuName">
+                    </div>
+                    <div class="group" id="getClass">
+                        <script id='xuanruan' type="text/html">
+                            <em>{{title}}</em>
+                            <select name="classes" id="classes" lay-search>
+                                {{each information.class as value i}}
+                                <option value={{value}}>{{value}}</option>
+                                {{/each}}
+                            </select>
+                        </script>
+                    </div>
+
+
+                    <div class="group">
+                        <em>楼&nbsp;栋</em>
+                        <select name="building" id="building" lay-search>
+                            <option value="一栋">1栋</option>
+                            <option value="二栋">2栋</option>
+                            <option value="三栋">3栋</option>
+                            <option value="四栋">4栋</option>
+                            <option value="五栋">5栋</option>
+                            <option value="六栋">6栋</option>
+                        </select>
+                    </div>
+                    <div class="group">
+                        <input type="text" placeholder="宿舍号" id="bedroom_number" name="bedroom_number">
+                    </div>
+                    <div class="group">
+                        <em>选&nbsp;&nbsp;择&nbsp;&nbsp;系&nbsp;&nbsp;部</em>
+                        <select name="department" id="department" lay-search>
+                            <option value="信息工程系">信息工程系</option>
+                            <option value="数字艺术系">数字艺术系</option>
+                            <option value="机电工程系"> 机电工程系</option>
+                            <option value="电子工程系">电子工程系</option>
+                            <option value="经济与管理系">经济与管理系</option>
+                            <option value="电气工程系">电气工程系</option>
+                            <option value=" 汽车工程系"> 汽车工程系</option>
+                        </select>
+                    </div>
+
+                    <div class="group">
+                        <input type="tel" placeholder="学生电话" id="stu_phone" name="stu_phone">
+                    </div>
+                    <div class="group">
+                        <input type="text" placeholder="辅导员" id="counselor" name="counselor">
+                    </div>
+                    <div class="group">
+                        <input type="tel" placeholder="辅导员电话" id="counselor_phone" name="counselor_phone">
+                    </div>
+                    <div class="group">
+                        <input type="tel" placeholder="备注" id="remark" name="remark">
+                    </div>
+
+                    <div class="group">
+                        <input type="hidden" value="out" id="type" name="type"/>
+                    </div>
+
+            </div>
+            </div>
+            <input type="submit" input style='border-radius:1.6rem' class='submit' value="提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交">
+        </form>
+
+        <div class="alertInfo">
+            <h3>请将以下信息补充完整</h3>
+        </div>
+    </div>
+</div>
+<script src="../../../static/js/art.js"></script>
+<script src="../../../static/js/stayForm.js"></script>
+
+<script>
+    var classData = {
+        title:'班   级',
+        information:{
+            class:['软件17-5','大数据17-1', '计网17-1', '计网17-2', '计网17-3',
+                '计网17-4','联想17-1', '软件17-1', '软件17-2', '软件17-3',
+                '软件17-4', '信安17-1', '信安17-2', '云计算17-1',
+                '大数据18-1', '计网18-1', '计网18-2', '计网18-3',
+                '软件18-1', '软件18-2', '软件18-3',
+                '信安18-1', '信安18-2', '云计算18-1',
+                '云计算18-2',
+            ]
+        },
+        /*art:{
+
+        },
+        electromechanical:{
+    }*/
+    }
+    var html = template('xuanruan',classData)
+    document.getElementById('getClass').innerHTML = html;
+</script>
+</body>
+
+</html>

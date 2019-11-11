@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>主体</title>
+    <link rel="stylesheet" href="../../../static/css/normalize.css">
+    <link rel="stylesheet" href="../../../static/css/main.css">
+    <link rel="stylesheet" href="../../../static/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../static/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css">
+    <link rel="stylesheet" href="../../../static/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../../../static/css/shouye.css">
+    <link rel="stylesheet" href="../../../static/css/mainAdd.css">
+    <link rel="stylesheet" href="../../../static/lib/layui/css/layui.css">
+
+
+
+</head>
+<body>
+<div class="container">
+    <div class="child">
+            <main class="main">
+                <header>
+                    <h1><img  _href="http://www.scitc.com.cn/" src="../../../static/img/logo.png" alt="" width="100px" height="100"></h1>
+                </header>
+                <div>
+                    <ul style="clear:both">
+                    <li _href="https://weibo.com/scitc0839/profile?rightmod=1&wvr=6&mod=personnumber&is_all=1"><i class="fa  fa-weibo fa-3x"></i><p>官方微博</p></li>
+                    <li _href="https://weibo.com/scitc0839/profile?rightmod=1&wvr=6&mod=personnumber&is_all=1"><i class="fa  fa-weixin fa-3x"></i><p>微信公众</p></li>
+                    <li _href="https://weibo.com/scitc0839/profile?rightmod=1&wvr=6&mod=personnumber&is_all=1"><i class="fa fa-circle-o fa-3x typeone"></i><p>手机客户端</p></li>
+                    <li _href="http://web2.scitc.com.cn/LeaderMail/"><i class="fa fa-envelope-open fa-3x"></i><p>领导信件</p></li>
+                    </ul>
+                </div>
+            </main>
+        <footer>
+            <div class="owl-carousel">
+                <div><img src="../../../static/img/addOne.jpg" alt=""></div>
+                <div><img src="../../../static/img/addTwo.png" alt=""></div>
+                <div><img src="../../../static/img/download-1.png" alt=""></div>
+            </div>
+        </footer>
+
+        <!-- 数据导航-->
+        <nav class="nav">
+            <h2>最新公告</h2>
+            <section>
+                <ul th:if="${not #lists.isEmpty(notices)}">
+
+                        <tr th:each="notice,noticeStat: ${notices}">
+                        <li>
+                            <div>
+                                <h4>
+                                    <a target="_blank" th:href="'/show/message/' + ${notice.id}"
+                                       th:title="${notice.title}" th:text="${notice.title}">
+                                    </a>
+
+                                    <span th:text="${#dates.format(notice.createTime,'yyyy-MM-dd')}"></span>
+
+                                </h4>
+                            </div>
+                        </li>
+                    </tr>
+
+
+
+
+                </ul>
+
+                <div align="center" th:if="${!notices.isEmpty()}" id="pageable" class="page">
+                </div>
+                <div th:if="${notices.isEmpty()}" class="page ">
+                    没有找到相关结果>_<，换个姿势去搜索相关数据吧~
+                </div>
+
+            </section>
+        </nav>
+    </div>
+</div>
+
+<script src="../../../static/js/jquery-3.3.1.min.js"></script>
+<script src="../../../static/OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
+<script src="../../../static/js/shouYe.js"></script>
+<script src="../../../static/lib/layui/layui.js"></script>
+<script>
+
+    var data = {};
+
+    function locate_url(start, size) {
+
+        var target = '/show/messageAll?';
+        $.each(data, function (key, value) {
+            target += (key + '=' + value + '&');
+        });
+        target += 'start=' + start + '&size=' + size;
+        return target;
+    }
+
+    function changeSimpleCondition(key, value) {
+        switch (key) {
+            case '*':
+                delete data[key];
+                break;
+            default:
+                data[key] = value;
+        }
+        window.location.href = locate_url(0, [[${searchBody.size}]]);
+    }
+
+    function changeSort(orderBy) {
+        data.orderBy = orderBy;
+
+        window.location.href = locate_url(0, [[${searchBody.size}]]);
+    }
+
+    var total = [[${total}]];
+    var start = [[${searchBody.start}]];
+    var size = [[${searchBody.size}]];
+    if (size < 1) {
+        size = 5;
+    }
+
+    layui.use('laypage', function () {
+
+        var laypage = layui.laypage;
+
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'pageable', //注意，这里的 test1 是 ID，不用加 # 号
+            count: total, //数据总数，从服务端得到
+            limit: size,
+            curr: start / size + 1,
+            jump: function (obj, first) {
+                //首次不执行
+                if (!first) {
+                    window.location.href = locate_url((obj.curr - 1) * obj.limit, obj.limit);
+                }
+            }
+        })
+    });
+
+    console.log('18级的同学，祝贺你喜提彩蛋~\n' +
+        '或许你们还在犹豫是否加入，我会坦诚的告诉你我们超酷；\n' +
+        '在这里大家都用代码编写世界，不仅仅是增删改查；\n' +
+        '人工智能是发展的核心技术，做自己让未来不只领先几步；\n' +
+        '在这里做自己，欢迎来到起航！')
+
+    console.log('%c 请将你的申请发送至zz863146675bb@icloud.com','color:#bada55');
+</script>
+
+
+</body>
+</html>

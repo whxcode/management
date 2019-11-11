@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加公告</title>
+    <link rel="stylesheet" href="../../static/css/normalize.css">
+    <link rel="stylesheet" href="../../../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+    <style>
+        a {
+            text-decoration:none;
+        }
+        small,h1,label {
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header container">
+    <div class="page-header">
+        <h1><small>添加公告</small></h1>
+    </div>
+</div>
+<div class="comments container">
+    <form th:action="@{/add/message}" action="/add/message" method="post">
+        <div class="form-group">
+            <label for="">作者</label>
+            <input type="text" class="form-control" required minlength="3"
+                   maxlength="10" id="author"
+                   name="author" placeholder="请写入你的姓名">
+        </div>
+        <div class="form-group">
+            <label for="title">标题</label>
+            <input type="text" class="form-control" required minlength="2"
+                   maxlength="40" id="title"
+                   name="title" placeholder="公告标题">
+        </div>
+        <div class="form-group">
+            <label for="context">内容</label>
+            <textarea class="form-control" name="context"
+                      id="context" cols="30" rows="10"
+                      required minlength="20" maxlength="200"
+                      style="resize:none"
+            ></textarea>
+        </div>
+        <button type="submit" class="btn btn-default btn-success">添加</button>
+    </form>
+</div>
+
+</body>
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script src="../../../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</html>

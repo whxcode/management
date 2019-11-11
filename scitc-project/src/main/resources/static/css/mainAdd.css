@@ -1,0 +1,67 @@
+i {
+  font-style: normal;
+}
+
+.nav {
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  font-size: 1.4rem;
+}
+.nav h2 {
+  padding: .5rem 2rem 0;
+  box-sizing: border-box;
+}
+.nav button {
+  outline: none;
+  background: rgba(42, 171, 210, 0.5);
+  border: 0;
+  width: 50px;
+  height: 50px;
+  padding: 1rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 80%;
+  font-size: 2.5rem;
+  text-align: center;
+  cursor: pointer;
+  line-height: 31px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1) inset;
+}
+.nav button::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.nav section {
+  border: 1px solid #c9c9c9;
+  margin-bottom: .6rem;
+}
+.nav section ul {
+  font-size: 1.6rem;
+}
+.nav section ul li {
+  margin: .4rem 0;
+  box-sizing: border-box;
+  padding-left: 2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  cursor: pointer;
+}
+.nav section ul li i {
+  margin-right: 4rem;
+  flex: 7;
+}
+.nav section ul li span {
+  flex: 3;
+}
+@media screen and (max-width: 550px) {
+  .nav {
+    padding: .2rem;
+  }
+}
+
+/*# sourceMappingURL=mainAdd.css.map */

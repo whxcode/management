@@ -1,0 +1,76 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人信息</title>
+    <link rel="stylesheet" href="../../../static/css/normalize.css">
+    <link rel="stylesheet" href="../../../static/css/main.css">
+    <link rel="stylesheet" href="../../../static/css/selfInfo.css">
+    <link rel="stylesheet" href="../../../static/font-awesome-4.7.0/css/font-awesome.css">
+    <script src="../../../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../../../static/js/main.js"></script>
+
+
+</head>
+<body>
+<form class="form"  th:action="@{/user/api/updateUserInfo}" action="/user/api/updateUserInfo">
+  <span class="help-block" style="color: red;" th:if="${param.error}"
+        th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"
+  >
+ </span>
+    <div class="container">
+        <div class="container-child">
+            <section>
+                <div class="left">
+                    <h3>个&nbsp;&nbsp;人&nbsp;&nbsp;资&nbsp;&nbsp;料</h3>
+                    <main>
+                        <p><span id="username">学号:</span><i th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"></i></p>
+                        <p><span id="nickname">姓名:</span><i th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.nickname}"></i></p>
+                        <p><span id="classes">班级:</span><i th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.classes}"></i></p>
+                        <p><span id="gender">性别:</span><i th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.gender}"></i></p>
+                    </main>
+                </div>
+                <div class="right">
+                    <header>
+                        账户管理
+                    </header>
+                        <div class="inputGroup" style="margin-bottom: 5rem">
+                            <label for="newPass">新&nbsp;密&nbsp;码</label>
+
+                            <input type="hidden" value="password" name="profile">
+
+                            <input type="text" placeholder="新&nbsp;密&nbsp;码" required maxlength="12" minlength="6"  id="Pass" value="" name="value">
+
+
+                        </div>
+
+                        <div class="inputGroup" >
+                            <label for="newPass">确&nbsp;认&nbsp;密&nbsp;码</label>
+
+                            <input type="text" placeholder="确&nbsp;认&nbsp;密&nbsp;码" required maxlength="12" minlength="6"  id="newPass" value="" >
+
+
+                        </div>
+                        <div class="inputGroup">
+                            <input type="submit" class="submit" value="修&nbsp;&nbsp;&nbsp;改" >
+                        </div>
+                </div>
+            </section>
+            <footer class="footer">
+                <h4>快捷访问</h4>
+                <ul>
+                    <li><p><i class="fa  fa-paste fa-1x"></i></p><em>留校表单</em></li>
+                    <li><p><i class="fa  fa-file-text-o  fa-1x"></i></p><em>离校表单</em></li>
+                </ul>
+            </footer>
+        </div>
+    </div>
+</form>
+<script src="../../../static/js/selfInfo.js"></script>
+
+</body>
+</html>

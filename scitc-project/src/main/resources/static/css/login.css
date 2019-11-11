@@ -1,0 +1,403 @@
+@charset "UTF-8";
+html, body {
+  /*height: 100%;*/
+  width: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+em, i, input {
+  font-style: normal;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+}
+
+.tableGroup {
+  cursor: pointer;
+  width: 100%;
+}
+.tableGroup thead tr td {
+  font-size: 1.6rem;
+  padding: 1.5rem .3rem;
+  letter-spacing: 3px;
+}
+.tableGroup tr {
+  font-size: 1.4rem;
+}
+.tableGroup tr td {
+  padding: 1rem .1rem;
+  text-align: center;
+}
+
+.tableLine td {
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+}
+
+.tableColor tr {
+  background: #f5f5f5;
+}
+.tableColor tr:nth-child(2n) {
+  background: #ebebeb;
+}
+
+.tableHover tr:hover {
+  transition: all .3s;
+  background: gainsboro;
+}
+
+.my-container {
+  transition: all .3s;
+}
+
+.bg {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  filter: blur(3px);
+}
+.bg img {
+  vertical-align: middle;
+  width: 100%;
+}
+
+.login {
+  background: #f6f6f6;
+  font-size: 100%;
+  display: flex;
+  position: relative;
+  margin: 3rem auto;
+  flex-flow: row wrap;
+  justify-items: center;
+  justify-content: center;
+}
+.login .bg::before {
+  content: " ";
+}
+.login .login-login {
+  position: relative;
+  color: #f5f5f5;
+}
+.login .login-login h1 {
+  padding: 0 3rem;
+  text-align: center;
+  margin: 0 0;
+}
+.login .login-login h1 img {
+  width: 60%;
+  vertical-align: middle;
+  cursor: crosshair;
+}
+@media only screen and (max-width: 30.0625rem) {
+  .login .login-login h1 {
+    padding: 0 1.4rem;
+  }
+}
+.login .login-login form {
+  padding-left: 1.5rem;
+}
+.login .login-login form .my-group {
+  color: #555;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+.login .login-login form .my-group span:nth-of-type(2) {
+  width: 36px;
+  left: 20.6rem;
+  font-size: 2.3rem;
+  text-align: center;
+  cursor: pointer;
+}
+.login .login-login form .my-group span:nth-of-type(2):hover {
+  filter: none;
+}
+.login .login-login form .my-group span {
+  font-size: 3rem;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 0;
+  position: absolute;
+  flex: 3 1 auto;
+  top: 1rem;
+  left: -13px;
+}
+.login .login-login form .my-group label {
+  margin-top: 1rem;
+  margin-left: 0;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  flex: 7;
+}
+.login .login-login form .my-group label input {
+  border: 0;
+  width: 300px;
+  height: 50px;
+  border-bottom: 1px solid #cccccc;
+  outline: none;
+  background: none;
+  font-size: 1.7rem;
+  padding-left: 3.4rem;
+}
+.login .login-login form .my-group label i {
+  color: red;
+  box-sizing: border-box;
+  position: absolute;
+  right: 1.5rem;
+  top: 3.5rem;
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+.login .login-login form .my-group .my-btn {
+  font-size: 2.3rem;
+  flex: 0 1 50%;
+  text-align: center;
+  margin: 1rem;
+  border: 0;
+  padding-left: 1rem;
+  color: #555;
+  outline: none;
+  background: none;
+  letter-spacing: 1.6rem;
+}
+.login .login-login form .my-group .my-btn:hover {
+  filter: blur(1px);
+}
+.login .login-login form .my-group .dl {
+  position: absolute;
+  right: 3rem;
+  margin: 0;
+  width: 72px;
+  top: 1px;
+  z-index: 55;
+  /*    background:blue;*/
+  height: 50px;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: .5rem;
+}
+.login .login-login form .my-group .dl span {
+  font-size: 2.5rem;
+  position: absolute;
+  top: 15px;
+  margin: 0;
+  cursor: pointer;
+  padding: 0;
+  z-index: 99;
+  left: 22px;
+}
+.login .login-login form .my-group .dl ul {
+  position: absolute;
+  z-index: 88;
+  width: 100%;
+  top: 51px;
+  left: 0;
+}
+.login .login-login form .my-group .dl ul li {
+  width: 5rem;
+  text-align: center;
+  padding: revert;
+  margin: .4rem 0;
+}
+.login .login-login form .my-group .dl ul li span {
+  font-size: 1.8rem;
+  position: static;
+}
+.login .login-login p a {
+  display: block;
+  padding: .6rem;
+  width: 50%;
+  transition: all .3s;
+  color: #1d6159a1;
+  letter-spacing: .4rem;
+}
+.login .login-login p a:hover {
+  text-decoration: none;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+  transition: all .3s;
+}
+@media only screen and (max-width: 40.0833333333rem) {
+  footer {
+    position: static;
+    bottom: 0;
+    width: 100%;
+  }
+  footer section {
+    width: 29.1666666667rem;
+  }
+  footer section p:nth-of-type(2) {
+    text-align: left !important;
+  }
+}
+@media only screen and (min-width: 50rem) {
+  footer {
+    position: static;
+  }
+  footer section {
+    width: 66.6666666667rem;
+  }
+}
+footer section {
+  color: #c5c5c5;
+  margin-top: 4rem;
+  background: #f6f6f6;
+  margin: 0 auto;
+}
+footer section p {
+  text-align: center;
+  position: relative;
+}
+footer section p:before, footer section p:after {
+  content: " 12";
+  display: block;
+  top: 0.75rem;
+  height: 1px;
+  text-shadow: none;
+  overflow: hidden;
+  width: 35%;
+  background: #cccccc;
+  position: absolute;
+}
+footer section p:before {
+  left: 0;
+}
+footer section p:after {
+  right: 0;
+}
+footer section p:nth-of-type(2) {
+  text-align: center;
+}
+footer section p:nth-of-type(2):before, footer section p:nth-of-type(2):after {
+  content: " ";
+  display: none;
+}
+footer section ul {
+  display: flex;
+}
+footer section ul li {
+  flex: 1;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+footer section ul li a {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  height: 100%;
+  font-size: 3.8rem;
+}
+footer section ul li a span {
+  transition: all .4s;
+  color: #555555;
+  box-sizing: border-box;
+  padding: .5rem;
+  border-radius: 50%;
+  position: relative;
+}
+footer .ad {
+  padding-left: 2rem;
+}
+footer .ad h3 {
+  letter-spacing: 2px;
+  color: #5f5f5f;
+  font-size: 2.2rem;
+}
+
+.test {
+  background: rgba(12, 12, 12, 0.4);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 4rem;
+  display: none;
+  justify-content: center;
+  z-index: 9999;
+}
+.test .box {
+  flex: 1;
+  display: inline-flex;
+  flex-flow: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.test .box .bt:nth-child(1) {
+  background: rgba(0, 0, 0, 0.1);
+  padding: .3rem 3rem;
+  margin: 0;
+  position: relative;
+  top: .6rem;
+}
+.test .box .bt:nth-child(2) {
+  position: relative;
+}
+.test .box .bt:nth-child(2):after {
+  content: " ";
+  position: relative;
+  width: 100%;
+  height: 2px;
+  display: block;
+  background: linear-gradient(to right, rgba(67, 68, 73, 0.94), rgba(203, 0, 0, 0.8), rgba(21, 47, 147, 0.88));
+  /* 标准的语法 */
+}
+.test .box .bt {
+  margin: 0;
+  padding: 1rem;
+}
+.test .box .bt input {
+  width: 100%;
+  padding: 1rem 3rem;
+  text-align: center;
+  font-size: 1.8rem;
+  outline: none;
+  border: none;
+  background: none;
+  box-sizing: border-box;
+  /*border-bottom: 2px solid #c5c5c5;*/
+}
+.test .box .bt:nth-child(3) {
+  padding: .5rem 2rem;
+}
+.test .box .bt:nth-child(3) input {
+  font-size: 2rem;
+  transition: all .3s;
+  border-bottom: 0;
+}
+.test .box .bt:nth-child(3) input:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-height: 38.375rem) {
+  .login {
+    margin: 1.5rem 0;
+  }
+  .login .login-login h1 {
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+  }
+  .login .login-login p a {
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 20rem) {
+  footer {
+    position: static;
+  }
+}
+@media only screen and (min-height: 40.3125rem) {
+  footer {
+    position: static;
+  }
+}
+
+/*# sourceMappingURL=login.css.map */

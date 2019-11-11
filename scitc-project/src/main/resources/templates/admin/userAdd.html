@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>user</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../static/css/addUser.css">
+</head>
+<body>
+<br/>
+<h1>添加用户</h1>
+
+<form class="form-horizontal layui-form" th:action="@{/admin/toAdd}" action="/admin/toAdd" method="post">
+    <div class="form-group">
+        <label for="username" class="col-sm-2 control-label">用&nbsp;户&nbsp;名&nbsp;</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control " required minlength="2" id="username" name="username" placeholder="用户名">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nickname" class="col-sm-2  control-label">用户名称</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" required minlength="2" id="nickname" name="nickname" placeholder="用户名称">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="names" class="col-sm-2  control-label">角色权限</label>
+        <select name="names" id="names">
+            <option value ="ROLE_STUDENT">普通学生权限</option>
+            <option value ="ROLE_BANZHANG">班长权限</option>
+            <option value="ROLE_ADMIN">管理员权限</option>
+        </select>
+
+    </div>
+
+    <div class="group">
+        <em class='items-self'>性别:</em>
+        <em class='items-self'>男</em>
+        <input  class="input-self-type" type="radio" name="gender" value="男" title="男" checked>
+        <em class="items-self">女</em>
+        <input  class="input-self-type" type="radio" name="gender" value="女" title="女">
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">班级</label>
+        <div class="col-sm-3">
+            <input type="classes" class="form-control" required minlength="3" id="classes" name="classes" placeholder="班级">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">用户密码</label>
+        <div class="col-sm-3">
+            <input type="password" class="form-control"  required minlength="6" id="password" name="password" placeholder="用户密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">确认密码</label>
+        <div class="col-sm-3">
+            <input type="password" class="form-control"  required minlength="6" id="ps" name="ps" placeholder="确认密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2">
+            <button type="submit" class="btn btn-default">点击添加</button>
+        </div>
+    </div>
+</form>
+
+
+</body>
+
+
+<script>
+
+    document.getElementById('ps').addEventListener('blur',function(){
+        if(this.value !== password.value) {
+            window.alert('两次输入不同')
+            password.value = ''
+        }
+    })
+</script>
+</html>

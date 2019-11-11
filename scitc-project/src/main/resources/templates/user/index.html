@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+ >
+<head>
+	<meta charset="UTF-8">
+	<title>留校服务</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=no, minimum-scale=1, initial-scale=1,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="../../static/img/favicon.ico">
+    <link rel="stylesheet" href="../../static/css/font.css">
+	<link rel="stylesheet" href="../../static/css/index.css">
+	<link rel="stylesheet" href="../../static/css/normalize.css">
+	<link rel="stylesheet" href="../../static/css/main.css">
+	<link rel="stylesheet" href="../../static/css/indexSelf.css">
+    <link rel="stylesheet" href="../../static/font-awesome-4.7.0/css/font-awesome.css">
+
+    <script type="text/javascript" src="../../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../../static/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../../static/js/table.js"></script>
+    <script src="../../static/js/main.js"></script>
+    <style>
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+        .fatype {
+            float:right;;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- 顶部开始 -->
+<div class="container">
+    <div class="logo"><a href="#">留校管理</a>
+        <div style="clear: both;"></div>
+    </div>
+    <!--当session空时候才显示登录-->
+    <div th:if="${session==null || session.SPRING_SECURITY_CONTEXT==null}" class="logo"><a href="">登录</a>
+        <div style="clear: both;"></div>
+    </div>
+
+
+
+    <div class="left_open">
+        <i title="侧面工具栏" class="fa fa-bars fa-2x">
+            <em></em>
+        </i>
+    </div>
+
+</div>
+
+    <!-- 顶部结束 -->
+    <!-- 中部开始 -->
+     <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+
+
+ <h3  align="center" style="margin-top: 20px;" th:text="'当前登录用户: '+${session.SPRING_SECURITY_CONTEXT.authentication.principal.nickname}">
+  </h3>
+        <h3 align="center"  th:if="${session!=null&& session.SPRING_SECURITY_CONTEXT!=null}" style="margin-top: 10px;" >
+            <a href="/logout">退出</a>
+        </h3>
+
+
+
+        <div id="side-nav">
+        <ul id="nav">
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-address-card-o"></i>
+                    <cite>个人档案</cite>
+                    <i class="fatype fa fa-angle-double-right"></i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/personal/info">
+                            <cite>个人信息</cite>
+                        </a>
+                    </li >
+
+                    <li>
+                        <a _href="/user/show/personal">
+                            <cite>我的留校离校记录</cite>
+                        </a>
+                    </li >
+                </ul>
+
+            </li>
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT')">
+                <a href="javascript:;">
+                    <i class="fa fa-file-code-o"></i>
+                    <cite>填写信息</cite>
+                    <i class="fatype fa fa-angle-double-right"></i>
+
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/student/info">
+
+                            <cite>留校表单</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/student/leave">
+
+                            <cite>离校表单</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li  sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="javascript:;">
+                    <i class="fa fa-comment"></i>
+                    <cite>Admin</cite>
+                    <i class="fatype fa fa-angle-double-right"></i>
+
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/admin/show/messageAll?type=stay">
+
+                            <cite>留校信息</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/admin/show/leave/message?type=out">
+
+                            <cite>离校信息</cite>
+                        </a>
+                    </li >
+
+                    <li>
+                        <a _href="/admin/addMessage">
+
+                            <cite>添加公告信息</cite>
+                        </a>
+                    </li >
+
+                </ul>
+            </li>
+
+
+            <!--此菜单只有管理员权限,和班长权限才能进入,才能进入此接口-->
+
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                <a href="javascript:;">
+                    <i class="fa fa-comment"></i>
+                    <cite>查看信息</cite>
+                    <i class="fatype fa fa-angle-double-right"></i>
+
+                </a>
+                <ul class="sub-menu">
+
+                    <li>
+                        <a _href="/admin/show/unfinshed/all">
+
+                            <cite>查看未提交信息用户</cite>
+                        </a>
+                    </li >
+
+                </ul>
+            </li>
+
+
+            <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT')">
+                <a href="javascript:;">
+                    <i class="fa fa-comment"></i>
+                    <cite>数据分析</cite>
+                    <i class="fatype fa fa-angle-double-right"></i>
+
+                </a>
+                <ul class="sub-menu">
+
+                    <li>
+                        <a _href="/getEcharts">
+
+                            <cite>留校信息可视化</cite>
+                        </a>
+                    </li >
+
+                </ul>
+            </li>
+
+                <!--此菜单只有管理权限才能进入,才能进入此接口-->
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+
+
+                <li>
+                    <a href="javascript:;">
+                        <i class="fa fa-exclamation"></i>
+                        <cite>管理</cite>
+                        <i class="fatype fa fa-angle-double-right"></i>
+
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a _href="/admin/show/page/list">
+
+                                <cite>查看用户</cite>
+                            </a>
+                        </li >
+
+                    </ul>
+                </li>
+            </div>
+
+
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="x-slide_left"></div> -->
+    <!-- 左侧菜单结束 -->
+
+    <!-- 右侧主体开始 -->
+    <div class="page-content page-content-self"  style="height:calc(100% - 72px)">
+        <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="true">
+          <ul class="layui-tab-title">
+            <li class="home"><i class="fa fa-home fa-2x"></i>首页</li>
+          </ul>
+          <div class="layui-tab-content" style="background: #f6f6f6;">
+            <div class="self-layui layui-tab-item layui-show "  >
+                <iframe src='/show/messageAll' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="page-content-bg" style="height:100%"></div>
+    <!-- 右侧主体结束 -->
+    <!-- 中部结束 -->
+    <script src="../../static/js/index.js"></script>
+        </body>
+</html>

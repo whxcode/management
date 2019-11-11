@@ -1,0 +1,67 @@
+i, span {
+    font-style: normal;
+}
+
+.container {
+    padding: 0 .8rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.container nav > p {
+    padding: .4rem 0 .6rem;
+    border-bottom: 1px solid #ccc;
+}
+.container h1 {
+    padding: .2rem 1rem .4rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: .3rem;
+}
+.container main {
+    color: #555;
+}
+.container main h4 {
+    margin: .5rem 0;
+    font-size: 1.2rem;
+}
+.container main h4 i {
+    margin-right: .7rem;
+}
+.container main section {
+    margin-top: 1rem;
+    text-indent: 1rem;
+}
+.container footer {
+    border-top: 1px solid #ccc;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.container footer p {
+    margin: .4rem 0 .4rem;
+}
+.container footer span {
+    margin-right: .8rem;
+}
+
+@media screen and (max-width: 560px) {
+    .container {
+        margin: 0;
+    }
+    .container h1 {
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width: 483px) {
+    .container {
+        margin: 0;
+    }
+    .container h1 {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+/*# sourceMappingURL=add.css.map */

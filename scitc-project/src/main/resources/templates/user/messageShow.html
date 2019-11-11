@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"  id="adda" style="overflow: auto" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学院关于开展2018年用人单位评价的通</title>
+    <link rel="stylesheet" href="../../../static/css/normalize.css">
+    <link rel="stylesheet" href="../../../static/css/messageShow.css">
+    <script type="text/javascript" src="../../../static/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <nav>
+        <p>通知公告</p>
+        <h1 th:text="${message.title}" id="title">学院关于开展2018年用人单位评价的通</h1>
+    </nav>
+
+    <main>
+        <h4 th:text="${message.author}"><i >作者:</i><span id="author">xxx</span></h4>
+       <section th:text="${message.context}" id="context" class="text">
+           <h4>各用人单位</h4>
+            <br />
+           <p>为了解贵单位的人才需求，改进我校教学培养，为贵单位提供更优秀的人才，学院将于近期委托麦可思数据（北京）</p>
+           <p>有限公司开展2018年用人单位项目评价。诚邀您积极参与</p>
+        <p>评价时间：2018年11月上旬-2018年11月底</p>
+        <p>评价对象：2018年用人单位</p>
+        <p>评价方式：问卷采用在线答题方式进行，答题入口将通过邮件发送给各位。</p>
+        <p>郑重承诺：本问卷调查将对信息严格保密，问卷所收集到的相关信息仅作分析研究使用。请您积极配合，如实填写。</p>
+        <p>再次感谢您的信任和支持！</p>
+       </section>
+    </main>
+
+    <footer><p>四川信息职业技术学院</p><i th:text="${#dates.format(message.lastUpdateTime,'yyyy-MM-dd')}"  id="createTime">2018年11月8日</i></footer>
+</div>
+<script>
+
+
+</script>
+</body>
+</html>

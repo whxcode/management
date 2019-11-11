@@ -1,0 +1,100 @@
+.infoText {
+  /*    filter:blur(.6rem);*/
+}
+.infoText .child {
+  display: flex;
+  box-sizing: border-box;
+  margin: 1.4rem;
+}
+.infoText .child select {
+  border-radius: 0;
+  width: 100%;
+  outline: none;
+  text-align: center;
+  margin: 0 auto;
+  border: none;
+  color: #646464;
+  font-size: 1.8rem;
+  height: 3rem;
+  background: none;
+  text-align-last: center;
+  /* border-bottom: 1px solid #ccc; */
+}
+.infoText .child .child-left, .infoText .child .child-right {
+  flex: 1;
+  box-sizing: border-box;
+  border-right: 1px solid #ccc;
+}
+.infoText .child .child-left .group, .infoText .child .child-right .group {
+  margin: 0 auto;
+  padding: .5rem;
+  width: 30rem;
+  color: #f5f5f5;
+}
+.infoText .child .child-left .group em, .infoText .child .child-right .group em {
+  display: block;
+  text-align: left;
+  font-style: normal;
+  font-size: 1.6rem;
+  padding-left: 1.2rem;
+  color: #090909;
+}
+.infoText .child .child-left .group textarea, .infoText .child .child-right .group textarea {
+  width: 100%;
+  padding: 1rem;
+  color: #646464;
+  margin: 0;
+  font-size: 1.5rem;
+  resize: none;
+  outline: none;
+  border: .2px solid #ccc;
+}
+.infoText .child .child-left .group input, .infoText .child .child-right .group input {
+  color: #646464;
+  font-size: 1.6rem;
+  outline: none;
+  height: 3rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  letter-spacing: .2rem;
+  width: 30rem;
+  border: none;
+  background: none;
+  border-bottom: .1rem solid #ccc;
+}
+.infoText .child .child-right {
+  border-right: 0;
+}
+.infoText input[type="submit"] {
+  background: red;
+  display: block;
+  margin: .5rem auto;
+  padding: 1rem 3rem;
+  font-size: 1.8rem;
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 1px solid #ccc;
+}
+@media all and (max-width: 1020px) {
+  .infoText .child {
+    flex-flow: column;
+  }
+  .infoText .child .child-left, .infoText .child .child-right {
+    border: none;
+  }
+  .infoText .child .child-left .group, .infoText .child .child-right .group {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .infoText .child .child-left .group input, .infoText .child .child-right .group input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .infoText .child .child-left textarea, .infoText .child .child-right textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/*# sourceMappingURL=staySchoolForm.css.map */

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="../../../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <style>
+        .type-one {
+            width: 100%;
+            display: flex;
+            margin: .5rem auto;
+            max-width: 800px;
+            position: relative;
+            left:50%;
+            padding:1.2rem;
+            transform: translate(-50%,0);
+
+        }
+        .type-one>input {
+            width: calc(100% + 1.2rem - 104px);
+            border-radius: 0;
+            height: 45px;
+            margin:0 .5rem;
+
+        } .type-one>button {
+              width: 100px;
+              right: -89px;      height: 45px;    border-radius: 0;
+              position:absolute;
+
+          }
+    </style>
+
+    <title>离校信息查看</title>
+</head>
+
+<form th:action="@{/admin/show/leave/qbc}" action="/admin/show/leave/qbc" method="post">
+
+
+    <div class="col-xs-2 type-one">
+        <input type="text" name="stuName" class="form-control" placeholder="已学生名称查询:如张三">
+        <input type="text" name="classes" class="form-control" placeholder="已班级查询:如软件17-2">
+        <button type="submit" class="btn btn-default btn-success">搜索</button>
+
+    </div>
+
+
+    <table class="table .table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>楼栋</th>
+            <th>寝室号</th>
+            <th>系部</th>
+            <th>班级</th>
+            <th>姓名</th>
+            <th>学生电话</th>
+            <th>辅导员</th>
+            <th>辅导员电话</th>
+            <th>备注</th>
+        </thead>
+        <tbody>
+        <!--默认数据分页-->
+        <tr th:each="data : ${datas}">
+            <td th:text="${data.id}"></td>
+            <td th:text="${data.building}">
+            <td th:text="${data.bedroom_number}"></td>
+            <td th:text="${data.department}"></td>
+            <td th:text="${data.classes}"></td>
+            <td th:text="${data.stuName}"></td>
+            <td th:text="${data.stu_phone}"></td>
+            <td th:text="${data.counselor}"></td>
+            <td th:text="${data.counselor_phone}"></td>
+            <td th:text="${data.remark}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</form>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a href="/UserOutDownloads" class="btn btn-info">导出EXCEL</a>
+    </div>
+</div>
+
+
+<div class="page" style="text-align: center">
+    <ul data-am-widget="pagination" class="pagination pagination-lg" style="text-align: center">
+        <li>
+            <a th:href="@{/admin/show/leave/message(page=0)}" class="">首页</a>
+        </li>
+
+    </ul>
+
+
+    <ul th:if="${datas.totalPages le 7}" data-am-widget="pagination" class="pagination pagination-lg" style="text-align: center">
+
+
+
+        <li th:if="${datas.number > 0}" class="disabled">
+            <a th:href="@{?page={page}(page=${datas.number})}" class="">上一页</a>
+        </li>
+        <li th:each="i : ${#numbers.sequence(1, datas.totalPages)}"
+            th:classappend="${(datas.number + 1) eq i} ? 'am-active' : ''">
+            <a th:href="@{?page={page}(page=${i})}"
+               th:text="${i}" class="">1</a>
+        </li>
+        <li th:unless="${datas.number + 1 == datas.totalPages}" class="disabled ">
+            <a th:href="@{?page={page}(page=${datas.number} + 2)}" class="">下一页</a>
+        </li>
+    </ul>
+    <ul th:if="${datas.totalPages gt 7}" data-am-widget="pagination" class="pagination pagination-lg" style="text-align: center">
+        <!-- 上一页 -->
+        <li th:classappend="*{first} ? 'disabled' : ''" th:if="${datas.number > 0}" class="am-pagination-prev ">
+            <a th:href="@{?page={page}(page=${datas.number - 2})}">上一页</a>
+        </li>
+        <li class="am-pagination-first" th:classappend="${(datas.number + 1) eq 1} ? 'am-active' : ''">
+            <a th:href="@{?page=1}">1</a>
+        </li>
+        <!-- 当前页面小于等于4 -->
+        <li th:if="${(datas.number + 1) le 4}" th:each="i : ${#numbers.sequence(2,5)}"
+            th:classappend="${(datas.number + 1) eq i} ? 'am-active' : ''" >
+            <a th:href="@{?page={page}(page=${i})}">
+                <span th:text="${i}"></span>
+            </a>
+        </li>
+        <li th:if="${(datas.number + 1) le 4}">
+            <a href="javascript:void(0);">
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        <!-- 最后一页与当前页面之差，小于等于3 -->
+        <li th:if="${(datas.totalPages -(datas.number + 1)) le 3}">
+            <a href="javascript:void(0);" >
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        <li th:if="${(datas.totalPages -(datas.number + 1)) le 3}" th:each="i : ${#numbers.sequence(datas.totalPages -4, datas.totalPages -1)}"
+            th:classappend="${(datas.number + 1) eq i} ? 'am-active' : ''" >
+            <a th:href="@{?page={page}(page=${i})}">
+                <span th:text="${i}"></span>
+            </a>
+        </li>
+        <!-- 最后一页与当前页面之差大于3，且  当前页面大于4-->
+        <li th:if="${((datas.number + 1) gt 4) && ((datas.totalPages -( datas.number + 1)) gt 3 )}">
+            <a href="javascript:void(0);">
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        <li th:if="${((datas.number + 1) gt 4) && ((datas.totalPages -(datas.number + 1)) gt 3 )}"
+            th:classappend="${(datas.number + 1) eq (datas.number + 1)} ? 'am-active' : ''">
+            <a th:href="@{?page={page}(page=${datas.number +1})}" th:text="${datas.number +1}">number</a>
+        </li>
+        <li th:if="${((datas.number + 1) gt 4) && ((datas.totalPages -(datas.number + 1)) gt 3 )}">
+            <a th:href="@{?page={page}(page=${datas.number+2})}" th:text="${datas.number+2}">number</a>
+        </li>
+        <li th:if="${((datas.number + 1) gt 4) && ((datas.totalPages -(datas.number + 1)) gt 3 )}">
+            <a th:href="@{?page={page}(page=${datas.number+3})}" th:text="${datas.number+3}">number</a>
+        </li>
+        <li th:if="${((datas.number + 1) gt 4) && ((datas.totalPages -(datas.number + 1)) gt 3 )}">
+            <a href="javascript:void(0);">
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        <!-- 最后一页 -->
+        <li th:classappend="${(datas.number + 1) eq datas.totalPages} ? 'am-active' : ''" >
+            <a th:href="@{?page={page}(page=${datas.totalPages})}" th:text="${datas.totalPages}">endPage</a>
+        </li>
+        <!-- 下一页 -->
+        <li th:classappend="*{last} ? 'disabled' : ''" th:unless="${datas.number + 1 == datas.totalPages}">
+            <a th:href="@{?page={page}(page=${datas.number+2})}">
+                <span aria-hidden="true">下一页</span>
+            </a>
+        </li>
+    </ul>
+
+
+    <ul data-am-widget="pagination" class="pagination pagination-lg" style="text-align: center">
+        <li>
+            <a th:href="@{/admin/show/leave/message(page=${totalPages-1})}" class="">尾页</a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+
+
+</body>
+
+
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script src="../../../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+<script>
+
+
+</script>
+
+</html>

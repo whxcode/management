@@ -1,0 +1,71 @@
+html, body {
+  /*height: 100%;*/
+  width: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.alertInfo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.1);
+  display: none;
+  padding: 2rem 0;
+  text-align: center;
+  box-sizing: border-box;
+  opacity: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.alertInfo h3 {
+  font-size: 2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+.alertInfo p {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: .5rem;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.alertInfo p:hover {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.alertInfo button {
+  background: 0;
+  outline: 0;
+  border: 0;
+  border-right: 0;
+  font-size: 2.3rem;
+  margin-top: 2.5rem;
+  cursor: pointer;
+  padding: .8rem;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.alertInfo button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/*# sourceMappingURL=leaveStyle.css.map */
